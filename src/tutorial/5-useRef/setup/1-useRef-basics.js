@@ -5,7 +5,28 @@ import React, { useEffect, useRef } from 'react';
 // target DOM nodes/elements
 
 const UseRefBasics = () => {
-  return <h2>useRef</h2>;
+  const refContainer = useRef(null);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(refContainer.current.value);
+  }
+
+  useEffect(() => {
+    return refContainer.current.focus()
+  })
+  
+  console.log(refContainer.current)
+  return (
+    <>
+      <form className='form' onSubmit={handleSubmit} >
+        <div>
+          <input type='text' ref={refContainer} />
+        </div>
+        <button type='submit'>submit</button>
+      </form>
+    </>
+  )
 };
 
 export default UseRefBasics;
